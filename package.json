@@ -1,0 +1,405 @@
+{
+  "name": "dual-explorer",
+  "displayName": "Dual Explorer",
+  "description": "Browse two independent file trees in VS Code with separate roots, filters, and state.",
+  "version": "1.4.0",
+  "publisher": "product-team",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.89.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onView:dualExplorerA",
+    "onView:dualExplorerB",
+    "onCommand:dualExplorer.selectRootA",
+    "onCommand:dualExplorer.selectRootB"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "dualExplorerA",
+          "name": "Explorer A"
+        },
+        {
+          "id": "dualExplorerB",
+          "name": "Explorer B"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "dualExplorer.selectRootA",
+        "title": "Dual Explorer: Select Root for Explorer A"
+      },
+      {
+        "command": "dualExplorer.selectRootB",
+        "title": "Dual Explorer: Select Root for Explorer B"
+      },
+      {
+        "command": "dualExplorer.refreshA",
+        "title": "Dual Explorer: Refresh Explorer A"
+      },
+      {
+        "command": "dualExplorer.refreshB",
+        "title": "Dual Explorer: Refresh Explorer B"
+      },
+      {
+        "command": "dualExplorer.refreshAll",
+        "title": "Dual Explorer: Refresh All"
+      },
+      {
+        "command": "dualExplorer.setFilterA",
+        "title": "Dual Explorer: Set Filter for Explorer A"
+      },
+      {
+        "command": "dualExplorer.setFilterB",
+        "title": "Dual Explorer: Set Filter for Explorer B"
+      },
+      {
+        "command": "dualExplorer.clearFilterA",
+        "title": "Dual Explorer: Clear Filter for Explorer A"
+      },
+      {
+        "command": "dualExplorer.clearFilterB",
+        "title": "Dual Explorer: Clear Filter for Explorer B"
+      },
+      {
+        "command": "dualExplorer.setTopLevelDirRegexA",
+        "title": "Dual Explorer: Set Top-Level Directory Regex for Explorer A"
+      },
+      {
+        "command": "dualExplorer.setTopLevelDirRegexB",
+        "title": "Dual Explorer: Set Top-Level Directory Regex for Explorer B"
+      },
+      {
+        "command": "dualExplorer.clearTopLevelDirRegexA",
+        "title": "Dual Explorer: Clear Top-Level Directory Regex for Explorer A"
+      },
+      {
+        "command": "dualExplorer.clearTopLevelDirRegexB",
+        "title": "Dual Explorer: Clear Top-Level Directory Regex for Explorer B"
+      },
+      {
+        "command": "dualExplorer.setTopLevelDirListA",
+        "title": "Dual Explorer: Set Top-Level Directory List (txt) for Explorer A"
+      },
+      {
+        "command": "dualExplorer.setTopLevelDirListB",
+        "title": "Dual Explorer: Set Top-Level Directory List (txt) for Explorer B"
+      },
+      {
+        "command": "dualExplorer.clearTopLevelDirListA",
+        "title": "Dual Explorer: Clear Top-Level Directory List for Explorer A"
+      },
+      {
+        "command": "dualExplorer.clearTopLevelDirListB",
+        "title": "Dual Explorer: Clear Top-Level Directory List for Explorer B"
+      },
+      {
+        "command": "dualExplorer.setFilterListA",
+        "title": "Dual Explorer: Set File Filter List (txt) for Explorer A"
+      },
+      {
+        "command": "dualExplorer.setFilterListB",
+        "title": "Dual Explorer: Set File Filter List (txt) for Explorer B"
+      },
+      {
+        "command": "dualExplorer.clearFilterListA",
+        "title": "Dual Explorer: Clear File Filter List for Explorer A"
+      },
+      {
+        "command": "dualExplorer.clearFilterListB",
+        "title": "Dual Explorer: Clear File Filter List for Explorer B"
+      },
+      {
+        "command": "dualExplorer.collapseAllA",
+        "title": "Dual Explorer: Collapse All in Explorer A"
+      },
+      {
+        "command": "dualExplorer.collapseAllB",
+        "title": "Dual Explorer: Collapse All in Explorer B"
+      },
+      {
+        "command": "dualExplorer.expandAllA",
+        "title": "Dual Explorer: Expand All in Explorer A",
+        "icon": "$(expand-all)"
+      },
+      {
+        "command": "dualExplorer.expandAllB",
+        "title": "Dual Explorer: Expand All in Explorer B",
+        "icon": "$(expand-all)"
+      },
+      {
+        "command": "dualExplorer.setForegroundColorA",
+        "title": "Dual Explorer: Set Item Color for Explorer A"
+      },
+      {
+        "command": "dualExplorer.setForegroundColorB",
+        "title": "Dual Explorer: Set Item Color for Explorer B"
+      },
+      {
+        "command": "dualExplorer.clearForegroundColorA",
+        "title": "Dual Explorer: Clear Item Color for Explorer A"
+      },
+      {
+        "command": "dualExplorer.clearForegroundColorB",
+        "title": "Dual Explorer: Clear Item Color for Explorer B"
+      },
+      {
+        "command": "dualExplorer.revealCurrentFileA",
+        "title": "Dual Explorer: Reveal Current File in Explorer A"
+      },
+      {
+        "command": "dualExplorer.revealCurrentFileB",
+        "title": "Dual Explorer: Reveal Current File in Explorer B"
+      },
+      {
+        "command": "dualExplorer.newFile",
+        "title": "New File"
+      },
+      {
+        "command": "dualExplorer.newFolder",
+        "title": "New Folder"
+      },
+      {
+        "command": "dualExplorer.rename",
+        "title": "Rename"
+      },
+      {
+        "command": "dualExplorer.delete",
+        "title": "Delete"
+      },
+      {
+        "command": "dualExplorer.copyPath",
+        "title": "Copy Path"
+      },
+      {
+        "command": "dualExplorer.revealInOS",
+        "title": "Reveal in File Explorer"
+      },
+      {
+        "command": "dualExplorer.open",
+        "title": "Open"
+      },
+      {
+        "command": "dualExplorer.openTerminalHere",
+        "title": "Open in Integrated Terminal"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "dualExplorer.selectRootA",
+          "when": "view == dualExplorerA",
+          "group": "dualExplorer@1"
+        },
+        {
+          "command": "dualExplorer.selectRootB",
+          "when": "view == dualExplorerB",
+          "group": "dualExplorer@1"
+        },
+        {
+          "command": "dualExplorer.refreshA",
+          "when": "view == dualExplorerA",
+          "group": "dualExplorer@2"
+        },
+        {
+          "command": "dualExplorer.refreshB",
+          "when": "view == dualExplorerB",
+          "group": "dualExplorer@2"
+        },
+        {
+          "command": "dualExplorer.setFilterA",
+          "when": "view == dualExplorerA",
+          "group": "dualExplorer@3"
+        },
+        {
+          "command": "dualExplorer.setFilterB",
+          "when": "view == dualExplorerB",
+          "group": "dualExplorer@3"
+        },
+        {
+          "command": "dualExplorer.clearFilterA",
+          "when": "view == dualExplorerA",
+          "group": "dualExplorer@4"
+        },
+        {
+          "command": "dualExplorer.clearFilterB",
+          "when": "view == dualExplorerB",
+          "group": "dualExplorer@4"
+        },
+        {
+          "command": "dualExplorer.setTopLevelDirRegexA",
+          "when": "view == dualExplorerA",
+          "group": "dualExplorer@5"
+        },
+        {
+          "command": "dualExplorer.setTopLevelDirRegexB",
+          "when": "view == dualExplorerB",
+          "group": "dualExplorer@5"
+        },
+        {
+          "command": "dualExplorer.clearTopLevelDirRegexA",
+          "when": "view == dualExplorerA",
+          "group": "dualExplorer@6"
+        },
+        {
+          "command": "dualExplorer.clearTopLevelDirRegexB",
+          "when": "view == dualExplorerB",
+          "group": "dualExplorer@6"
+        },
+        {
+          "command": "dualExplorer.setTopLevelDirListA",
+          "when": "view == dualExplorerA",
+          "group": "dualExplorer@7"
+        },
+        {
+          "command": "dualExplorer.setTopLevelDirListB",
+          "when": "view == dualExplorerB",
+          "group": "dualExplorer@7"
+        },
+        {
+          "command": "dualExplorer.clearTopLevelDirListA",
+          "when": "view == dualExplorerA",
+          "group": "dualExplorer@8"
+        },
+        {
+          "command": "dualExplorer.clearTopLevelDirListB",
+          "when": "view == dualExplorerB",
+          "group": "dualExplorer@8"
+        },
+        {
+          "command": "dualExplorer.setFilterListA",
+          "when": "view == dualExplorerA",
+          "group": "dualExplorer@9"
+        },
+        {
+          "command": "dualExplorer.setFilterListB",
+          "when": "view == dualExplorerB",
+          "group": "dualExplorer@9"
+        },
+        {
+          "command": "dualExplorer.clearFilterListA",
+          "when": "view == dualExplorerA",
+          "group": "dualExplorer@10"
+        },
+        {
+          "command": "dualExplorer.clearFilterListB",
+          "when": "view == dualExplorerB",
+          "group": "dualExplorer@10"
+        },
+        {
+          "command": "dualExplorer.expandAllA",
+          "when": "view == dualExplorerA",
+          "group": "navigation"
+        },
+        {
+          "command": "dualExplorer.expandAllB",
+          "when": "view == dualExplorerB",
+          "group": "navigation"
+        },
+        {
+          "command": "dualExplorer.setForegroundColorA",
+          "when": "view == dualExplorerA",
+          "group": "dualExplorer@12"
+        },
+        {
+          "command": "dualExplorer.setForegroundColorB",
+          "when": "view == dualExplorerB",
+          "group": "dualExplorer@12"
+        },
+        {
+          "command": "dualExplorer.clearForegroundColorA",
+          "when": "view == dualExplorerA",
+          "group": "dualExplorer@13"
+        },
+        {
+          "command": "dualExplorer.clearForegroundColorB",
+          "when": "view == dualExplorerB",
+          "group": "dualExplorer@13"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "dualExplorer.open",
+          "when": "view =~ /dualExplorer(A|B)/ && viewItem == file",
+          "group": "inline"
+        },
+        {
+          "command": "dualExplorer.newFile",
+          "when": "view =~ /dualExplorer(A|B)/ && viewItem == folder",
+          "group": "1_create@1"
+        },
+        {
+          "command": "dualExplorer.newFolder",
+          "when": "view =~ /dualExplorer(A|B)/ && viewItem == folder",
+          "group": "1_create@2"
+        },
+        {
+          "command": "dualExplorer.rename",
+          "when": "view =~ /dualExplorer(A|B)/",
+          "group": "2_modify@1"
+        },
+        {
+          "command": "dualExplorer.delete",
+          "when": "view =~ /dualExplorer(A|B)/",
+          "group": "2_modify@2"
+        },
+        {
+          "command": "dualExplorer.copyPath",
+          "when": "view =~ /dualExplorer(A|B)/",
+          "group": "3_clipboard@1"
+        },
+        {
+          "command": "dualExplorer.revealInOS",
+          "when": "view =~ /dualExplorer(A|B)/",
+          "group": "4_misc@1"
+        },
+        {
+          "command": "dualExplorer.openTerminalHere",
+          "when": "view =~ /dualExplorer(A|B)/",
+          "group": "4_misc@2"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Dual Explorer",
+      "properties": {
+        "dualExplorer.filter.caseSensitive": {
+          "type": "boolean",
+          "default": false,
+          "description": "Use case-sensitive filter matching in Dual Explorer views."
+        }
+      }
+    },
+    "colors": [
+      {
+        "id": "dualExplorer.explorerAForeground",
+        "description": "Text color for items in Dual Explorer A.",
+        "defaults": { "dark": "#cccccc", "light": "#333333", "highContrast": "#cccccc" }
+      },
+      {
+        "id": "dualExplorer.explorerBForeground",
+        "description": "Text color for items in Dual Explorer B.",
+        "defaults": { "dark": "#cccccc", "light": "#333333", "highContrast": "#cccccc" }
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "node node_modules/typescript/bin/tsc -p ./",
+    "watch": "node node_modules/typescript/bin/tsc -watch -p ./",
+    "package:vsix": "vsce package"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^3.6.2",
+    "@types/node": "^20.14.10",
+    "@types/vscode": "^1.89.0",
+    "typescript": "^5.5.4"
+  }
+}
