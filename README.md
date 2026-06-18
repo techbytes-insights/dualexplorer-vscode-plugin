@@ -4,6 +4,8 @@ Browse two completely independent file trees inside the VS Code Explorer sidebar
 
 ![Dual Explorer Screenshot](release/screenshot.png)
 
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-support-%23FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/techbytesinsights)
+
 ---
 
 ## Features
