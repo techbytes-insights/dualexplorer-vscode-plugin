@@ -2,6 +2,8 @@
 
 Browse two completely independent file trees inside the VS Code Explorer sidebar — each with its own root, filters, colors, and persistent state.
 
+![Dual Explorer Screenshot](release/screenshot.png)
+
 ---
 
 ## Features
