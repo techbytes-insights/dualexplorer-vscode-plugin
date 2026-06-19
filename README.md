@@ -195,10 +195,21 @@ VS Code **1.89.0** or later.
 
 ## Installation
 
-### From VSIX
+### From VSIX (VS Code UI)
 
 1. Download the latest `.vsix` from the [releases folder](https://github.com/techbytes-insights/dualexplorer-vscode-plugin/tree/main/release).
-2. In VS Code, open the Command Palette (`Ctrl+Shift+P`) → **Extensions: Install from VSIX...** → select the downloaded file.
+2. Open VS Code.
+3. Press `Ctrl+Shift+P` → type **Extensions: Install from VSIX...**
+4. Browse to and select the downloaded `.vsix` file.
+5. Click **Reload** when prompted.
+
+### From VSIX (terminal)
+
+```bash
+code --install-extension dual-explorer-1.5.0.vsix
+```
+
+Replace the filename with whichever version you downloaded.
 
 ### Using the installer script
 
