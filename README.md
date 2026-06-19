@@ -2,7 +2,7 @@
 
 Browse two completely independent file trees inside the VS Code Explorer sidebar — each with its own root, filters, colors, and persistent state.
 
-![Dual Explorer Screenshot](release/screenshot.png)
+![Dual Explorer Screenshot](https://raw.githubusercontent.com/techbytes-insights/dualexplorer-vscode-plugin/main/release/screenshot.png)
 
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-support-%23FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/techbytesinsights)
 
@@ -12,6 +12,7 @@ Browse two completely independent file trees inside the VS Code Explorer sidebar
 
 - **Two independent explorer panels** — Explorer A and Explorer B each have their own root folder, expansion state, selection, and filter settings.
 - **Persistent state** — root, filters, color, and expanded/selected items are all restored automatically when VS Code restarts.
+- **Root management** — set or remove the root folder for each panel independently without affecting the other.
 - **File filtering** — filter visible files by text, wildcard pattern, or a `.txt` allow-list.
 - **Top-level directory filtering** — restrict the top-level folders shown using a regex pattern or a `.txt` allow-list.
 - **Per-explorer color theming** — set a custom hex foreground color for items in each panel independently.
@@ -32,6 +33,17 @@ Browse two completely independent file trees inside the VS Code Explorer sidebar
 3. Click the toolbar icon or run **Dual Explorer: Select Root for Explorer A** (and/or B) to pick a root folder.
 
 The root, filter, and color choices persist across VS Code restarts — no setup needed again.
+
+---
+
+## Root Management
+
+Each explorer panel has its own independent root folder.
+
+- **Select Root** — opens a folder picker and sets the root for that panel. Clears the previous expansion and selection state.
+- **Remove Root** — clears the root for that panel, resetting it to an empty state. The other panel is completely unaffected.
+
+Run either command from the panel toolbar or via the Command Palette (`Ctrl+Shift+P`).
 
 ---
 
@@ -81,9 +93,9 @@ Each explorer panel can have its own item text color.
 
 Run **Dual Explorer: Set Item Color for Explorer A** (or B) and enter a 6-digit hex color (e.g. `#d4e8c2`). The color is saved globally in `workbench.colorCustomizations` and persists across sessions.
 
-Run **Dual Explorer: Clear Item Color** to reset to the default theme color.
+Run **Dual Explorer: Clear Item Color for Explorer A** (or B) to reset to the default theme color.
 
-The underlying color tokens that can also be set directly in `settings.json`:
+The underlying color tokens can also be set directly in `settings.json`:
 
 ```json
 "workbench.colorCustomizations": {
@@ -181,6 +193,63 @@ VS Code **1.89.0** or later.
 
 ---
 
+## Installation
+
+### From VSIX
+
+1. Download the latest `.vsix` from the [releases folder](https://github.com/techbytes-insights/dualexplorer-vscode-plugin/tree/main/release).
+2. In VS Code, open the Command Palette (`Ctrl+Shift+P`) → **Extensions: Install from VSIX...** → select the downloaded file.
+
+### Using the installer script
+
+**Linux / macOS**
+```bash
+bash install-dual-explorer.sh
+```
+
+**Windows (PowerShell)**
+```powershell
+.\install-dual-explorer.ps1
+```
+
+**Windows (Command Prompt)**
+```cmd
+install-dual-explorer.cmd
+```
+
+---
+
+## Changelog
+
+### 1.5.0
+- Added **Remove Root** command for Explorer A and Explorer B independently.
+- Added `repository` field to `package.json` for VS Code Marketplace publishing.
+
+### 1.4.0
+- Drag and drop support across Explorer A ↔ B.
+- Multi-select delete.
+
+### 1.3.1
+- Bug fixes for filter list handling.
+
+### 1.3.0
+- Top-level directory filtering via regex and `.txt` allow-list.
+
+### 1.2.1
+- Stability fixes for file watcher and expand state persistence.
+
+### 1.2.0
+- Per-explorer color theming with `workbench.colorCustomizations` integration.
+
+### 1.1.0
+- File filter list (`.txt`) support.
+- Reveal current file in explorer.
+
+### 1.0.0
+- Initial release with dual independent explorer panels, file filtering, persistent state, and full file operations.
+
+---
+
 ## Development
 
 ```bash
@@ -191,3 +260,11 @@ npm run package:vsix # produce .vsix
 ```
 
 Press `F5` in VS Code to launch an Extension Development Host with the extension loaded.
+
+---
+
+## Support
+
+If you find this extension useful, consider supporting its development:
+
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-support-%23FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/techbytesinsights)
