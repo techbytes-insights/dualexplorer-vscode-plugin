@@ -125,6 +125,15 @@ class DualExplorerProvider implements vscode.TreeDataProvider<ExplorerItem>, vsc
     this.refresh();
   }
 
+  clearRootUri(): void {
+    this.rootUri = undefined;
+    this.expanded.clear();
+    this.selectedUri = undefined;
+    this.persistState();
+    this.recreateWatcher();
+    this.refresh();
+  }
+
   setFilter(filter: string): void {
     this.filter = filter.trim();
     this.persistState();
@@ -888,6 +897,11 @@ export function activate(context: vscode.ExtensionContext): void {
 
   refreshWithMessages();
 
+  const removeRoot = (key: ExplorerKey): void => {
+    providers[key].clearRootUri();
+    refreshWithMessages();
+  };
+
   const selectRoot = async (key: ExplorerKey): Promise<void> => {
     const selected = await vscode.window.showOpenDialog({
       canSelectFolders: true,
@@ -1128,6 +1142,8 @@ export function activate(context: vscode.ExtensionContext): void {
     viewB,
     vscode.commands.registerCommand("dualExplorer.selectRootA", () => selectRoot("A")),
     vscode.commands.registerCommand("dualExplorer.selectRootB", () => selectRoot("B")),
+    vscode.commands.registerCommand("dualExplorer.removeRootA", () => removeRoot("A")),
+    vscode.commands.registerCommand("dualExplorer.removeRootB", () => removeRoot("B")),
     vscode.commands.registerCommand("dualExplorer.refreshA", () => {
       providers.A.refresh();
       setViewMessages();

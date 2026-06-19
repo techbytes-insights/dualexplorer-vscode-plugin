@@ -2,9 +2,13 @@
   "name": "dual-explorer",
   "displayName": "Dual Explorer",
   "description": "Browse two independent file trees in VS Code with separate roots, filters, and state.",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "publisher": "product-team",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/techbytes-insights/dualexplorer-vscode-plugin.git"
+  },
   "engines": {
     "vscode": "^1.89.0"
   },
@@ -39,6 +43,16 @@
       {
         "command": "dualExplorer.selectRootB",
         "title": "Dual Explorer: Select Root for Explorer B"
+      },
+      {
+        "command": "dualExplorer.removeRootA",
+        "title": "Dual Explorer: Remove Root for Explorer A",
+        "icon": "$(close)"
+      },
+      {
+        "command": "dualExplorer.removeRootB",
+        "title": "Dual Explorer: Remove Root for Explorer B",
+        "icon": "$(close)"
       },
       {
         "command": "dualExplorer.refreshA",
@@ -200,6 +214,16 @@
         },
         {
           "command": "dualExplorer.selectRootB",
+          "when": "view == dualExplorerB",
+          "group": "dualExplorer@1"
+        },
+        {
+          "command": "dualExplorer.removeRootA",
+          "when": "view == dualExplorerA",
+          "group": "dualExplorer@1"
+        },
+        {
+          "command": "dualExplorer.removeRootB",
           "when": "view == dualExplorerB",
           "group": "dualExplorer@1"
         },

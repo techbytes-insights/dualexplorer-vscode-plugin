@@ -123,6 +123,8 @@ All commands are available via the Command Palette (`Ctrl+Shift+P`):
 **Root**
 - `Dual Explorer: Select Root for Explorer A`
 - `Dual Explorer: Select Root for Explorer B`
+- `Dual Explorer: Remove Root for Explorer A`
+- `Dual Explorer: Remove Root for Explorer B`
 
 **Refresh**
 - `Dual Explorer: Refresh Explorer A`
