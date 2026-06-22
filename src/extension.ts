@@ -139,6 +139,20 @@ class DualExplorerProvider implements vscode.TreeDataProvider<ExplorerItem>, vsc
     this.refresh();
   }
 
+  reset(): void {
+    this.rootUri = undefined;
+    this.filter = "";
+    this.filterList = [];
+    this.topLevelDirRegex = "";
+    this.topLevelDirList = [];
+    this.foregroundColor = "";
+    this.expanded.clear();
+    this.selectedUri = undefined;
+    this.persistState();
+    this.recreateWatcher();
+    this.refresh();
+  }
+
   setFilter(filter: string): void {
     this.filter = filter.trim();
     this.persistState();
@@ -1106,6 +1120,26 @@ export function activate(context: vscode.ExtensionContext): void {
     refreshWithMessages();
   };
 
+  const resetExplorer = async (key: ExplorerKey): Promise<void> => {
+    const confirmed = await vscode.window.showWarningMessage(
+      `Reset Explorer ${key}? This clears the root folder, all filters, item color, and expanded state.`,
+      { modal: true },
+      "Reset"
+    );
+    if (confirmed !== "Reset") {
+      return;
+    }
+    const colorId = key === "A" ? "dualExplorer.explorerAForeground" : "dualExplorer.explorerBForeground";
+    providers[key].reset();
+    await updateColorCustomization(colorId, undefined);
+    decorationEmitter.fire(undefined);
+    refreshWithMessages();
+  };
+
+  const showExplorer = async (key: ExplorerKey): Promise<void> => {
+    await vscode.commands.executeCommand(key === "A" ? "dualExplorerA.focus" : "dualExplorerB.focus");
+  };
+
   const revealCurrent = async (key: ExplorerKey): Promise<void> => {
     const view = key === "A" ? viewA : viewB;
     await providers[key].revealCurrentFile(view);
@@ -1187,6 +1221,10 @@ export function activate(context: vscode.ExtensionContext): void {
     vscode.commands.registerCommand("dualExplorer.clearForegroundColorB", () => clearForegroundColor("B")),
     vscode.commands.registerCommand("dualExplorer.revealCurrentFileA", () => revealCurrent("A")),
     vscode.commands.registerCommand("dualExplorer.revealCurrentFileB", () => revealCurrent("B")),
+    vscode.commands.registerCommand("dualExplorer.resetA", () => resetExplorer("A")),
+    vscode.commands.registerCommand("dualExplorer.resetB", () => resetExplorer("B")),
+    vscode.commands.registerCommand("dualExplorer.showExplorerA", () => showExplorer("A")),
+    vscode.commands.registerCommand("dualExplorer.showExplorerB", () => showExplorer("B")),
     vscode.commands.registerCommand("dualExplorer.open", async (item: ExplorerItem) => {
       const { provider } = activeContext(item);
       await provider.open(item);

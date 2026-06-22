@@ -232,6 +232,10 @@ install-dual-explorer.cmd
 
 ## Changelog
 
+### 1.5.2
+- Added **Reset Explorer A / B** command: clears root folder, all filters, item color, and expanded state in one step (with confirmation). Available in the panel toolbar, dropdown menu, and Command Palette.
+- Added **Show Explorer A / B** commands to the Command Palette (`Ctrl+Shift+P`) for quick panel focus.
+
 ### 1.5.1
 - Changing the root folder now resets all filters, item color, and expanded state for that panel automatically.
 

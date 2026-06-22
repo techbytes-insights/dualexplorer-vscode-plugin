@@ -2,7 +2,7 @@
   "name": "dual-explorer",
   "displayName": "Dual Explorer",
   "description": "Browse two independent file trees in VS Code with separate roots, filters, and state.",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "publisher": "product-team",
   "license": "MIT",
   "repository": {
@@ -53,6 +53,24 @@
         "command": "dualExplorer.removeRootB",
         "title": "Dual Explorer: Remove Root for Explorer B",
         "icon": "$(close)"
+      },
+      {
+        "command": "dualExplorer.resetA",
+        "title": "Dual Explorer: Reset Explorer A",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "dualExplorer.resetB",
+        "title": "Dual Explorer: Reset Explorer B",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "dualExplorer.showExplorerA",
+        "title": "Dual Explorer: Show Explorer A"
+      },
+      {
+        "command": "dualExplorer.showExplorerB",
+        "title": "Dual Explorer: Show Explorer B"
       },
       {
         "command": "dualExplorer.refreshA",
@@ -208,6 +226,16 @@
     "menus": {
       "view/title": [
         {
+          "command": "dualExplorer.resetA",
+          "when": "view == dualExplorerA",
+          "group": "navigation"
+        },
+        {
+          "command": "dualExplorer.resetB",
+          "when": "view == dualExplorerB",
+          "group": "navigation"
+        },
+        {
           "command": "dualExplorer.selectRootA",
           "when": "view == dualExplorerA",
           "group": "dualExplorer@1"
@@ -346,6 +374,16 @@
           "command": "dualExplorer.clearForegroundColorB",
           "when": "view == dualExplorerB",
           "group": "dualExplorer@13"
+        },
+        {
+          "command": "dualExplorer.resetA",
+          "when": "view == dualExplorerA",
+          "group": "dualExplorer@99"
+        },
+        {
+          "command": "dualExplorer.resetB",
+          "when": "view == dualExplorerB",
+          "group": "dualExplorer@99"
         }
       ],
       "view/item/context": [
