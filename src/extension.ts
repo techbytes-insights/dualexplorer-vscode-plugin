@@ -118,6 +118,11 @@ class DualExplorerProvider implements vscode.TreeDataProvider<ExplorerItem>, vsc
 
   setRootUri(uri: vscode.Uri): void {
     this.rootUri = uri;
+    this.filter = "";
+    this.filterList = [];
+    this.topLevelDirRegex = "";
+    this.topLevelDirList = [];
+    this.foregroundColor = "";
     this.expanded.clear();
     this.selectedUri = undefined;
     this.persistState();
@@ -915,6 +920,9 @@ export function activate(context: vscode.ExtensionContext): void {
     }
 
     providers[key].setRootUri(selected[0]);
+    const colorId = key === "A" ? "dualExplorer.explorerAForeground" : "dualExplorer.explorerBForeground";
+    await updateColorCustomization(colorId, undefined);
+    decorationEmitter.fire(undefined);
     refreshWithMessages();
   };
 

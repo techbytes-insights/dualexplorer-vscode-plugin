@@ -40,7 +40,7 @@ The root, filter, and color choices persist across VS Code restarts — no setup
 
 Each explorer panel has its own independent root folder.
 
-- **Select Root** — opens a folder picker and sets the root for that panel. Clears the previous expansion and selection state.
+- **Select Root** — opens a folder picker and sets the root for that panel. Resets all filters, item color, expansion, and selection state for that panel so you start fresh in the new root.
 - **Remove Root** — clears the root for that panel, resetting it to an empty state. The other panel is completely unaffected.
 
 Run either command from the panel toolbar or via the Command Palette (`Ctrl+Shift+P`).
@@ -231,6 +231,9 @@ install-dual-explorer.cmd
 ---
 
 ## Changelog
+
+### 1.5.1
+- Changing the root folder now resets all filters, item color, and expanded state for that panel automatically.
 
 ### 1.5.0
 - Added **Remove Root** command for Explorer A and Explorer B independently.

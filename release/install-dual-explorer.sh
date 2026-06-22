@@ -2,7 +2,7 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-VSIX="$SCRIPT_DIR/dual-explorer-1.4.0.vsix"
+VSIX="$SCRIPT_DIR/dual-explorer-1.5.1.vsix"
 
 if [[ ! -f "$VSIX" ]]; then
   echo "Error: VSIX not found: $VSIX" >&2

@@ -5,3 +5,5 @@ src/**
 .gitignore
 README.md
 release/**
+recording.mp4
+*.mp4
