@@ -232,6 +232,9 @@ install-dual-explorer.cmd
 
 ## Changelog
 
+### 1.5.3
+- Clear and Remove options in the panel menu now only appear when the corresponding setting is actually active (e.g. "Clear Filter" is hidden until a filter is set). The Reset toolbar button also hides when nothing is configured.
+
 ### 1.5.2
 - Added **Reset Explorer A / B** command: clears root folder, all filters, item color, and expanded state in one step (with confirmation). Available in the panel toolbar, dropdown menu, and Command Palette.
 - Added **Show Explorer A / B** commands to the Command Palette (`Ctrl+Shift+P`) for quick panel focus.

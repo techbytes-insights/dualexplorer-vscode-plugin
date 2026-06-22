@@ -2,7 +2,7 @@
   "name": "dual-explorer",
   "displayName": "Dual Explorer",
   "description": "Browse two independent file trees in VS Code with separate roots, filters, and state.",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "publisher": "product-team",
   "license": "MIT",
   "repository": {
@@ -227,12 +227,12 @@
       "view/title": [
         {
           "command": "dualExplorer.resetA",
-          "when": "view == dualExplorerA",
+          "when": "view == dualExplorerA && dualExplorer.hasAnyStateA",
           "group": "navigation"
         },
         {
           "command": "dualExplorer.resetB",
-          "when": "view == dualExplorerB",
+          "when": "view == dualExplorerB && dualExplorer.hasAnyStateB",
           "group": "navigation"
         },
         {
@@ -247,12 +247,12 @@
         },
         {
           "command": "dualExplorer.removeRootA",
-          "when": "view == dualExplorerA",
+          "when": "view == dualExplorerA && dualExplorer.hasRootA",
           "group": "dualExplorer@1"
         },
         {
           "command": "dualExplorer.removeRootB",
-          "when": "view == dualExplorerB",
+          "when": "view == dualExplorerB && dualExplorer.hasRootB",
           "group": "dualExplorer@1"
         },
         {
@@ -277,12 +277,12 @@
         },
         {
           "command": "dualExplorer.clearFilterA",
-          "when": "view == dualExplorerA",
+          "when": "view == dualExplorerA && dualExplorer.hasFilterA",
           "group": "dualExplorer@4"
         },
         {
           "command": "dualExplorer.clearFilterB",
-          "when": "view == dualExplorerB",
+          "when": "view == dualExplorerB && dualExplorer.hasFilterB",
           "group": "dualExplorer@4"
         },
         {
@@ -297,12 +297,12 @@
         },
         {
           "command": "dualExplorer.clearTopLevelDirRegexA",
-          "when": "view == dualExplorerA",
+          "when": "view == dualExplorerA && dualExplorer.hasTopLevelDirRegexA",
           "group": "dualExplorer@6"
         },
         {
           "command": "dualExplorer.clearTopLevelDirRegexB",
-          "when": "view == dualExplorerB",
+          "when": "view == dualExplorerB && dualExplorer.hasTopLevelDirRegexB",
           "group": "dualExplorer@6"
         },
         {
@@ -317,12 +317,12 @@
         },
         {
           "command": "dualExplorer.clearTopLevelDirListA",
-          "when": "view == dualExplorerA",
+          "when": "view == dualExplorerA && dualExplorer.hasTopLevelDirListA",
           "group": "dualExplorer@8"
         },
         {
           "command": "dualExplorer.clearTopLevelDirListB",
-          "when": "view == dualExplorerB",
+          "when": "view == dualExplorerB && dualExplorer.hasTopLevelDirListB",
           "group": "dualExplorer@8"
         },
         {
@@ -337,12 +337,12 @@
         },
         {
           "command": "dualExplorer.clearFilterListA",
-          "when": "view == dualExplorerA",
+          "when": "view == dualExplorerA && dualExplorer.hasFilterListA",
           "group": "dualExplorer@10"
         },
         {
           "command": "dualExplorer.clearFilterListB",
-          "when": "view == dualExplorerB",
+          "when": "view == dualExplorerB && dualExplorer.hasFilterListB",
           "group": "dualExplorer@10"
         },
         {
@@ -367,22 +367,22 @@
         },
         {
           "command": "dualExplorer.clearForegroundColorA",
-          "when": "view == dualExplorerA",
+          "when": "view == dualExplorerA && dualExplorer.hasForegroundColorA",
           "group": "dualExplorer@13"
         },
         {
           "command": "dualExplorer.clearForegroundColorB",
-          "when": "view == dualExplorerB",
+          "when": "view == dualExplorerB && dualExplorer.hasForegroundColorB",
           "group": "dualExplorer@13"
         },
         {
           "command": "dualExplorer.resetA",
-          "when": "view == dualExplorerA",
+          "when": "view == dualExplorerA && dualExplorer.hasAnyStateA",
           "group": "dualExplorer@99"
         },
         {
           "command": "dualExplorer.resetB",
-          "when": "view == dualExplorerB",
+          "when": "view == dualExplorerB && dualExplorer.hasAnyStateB",
           "group": "dualExplorer@99"
         }
       ],

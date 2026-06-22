@@ -93,6 +93,7 @@ class DualExplorerProvider implements vscode.TreeDataProvider<ExplorerItem>, vsc
       this.expanded.add(uri);
     }
 
+    this.syncContexts();
     this.recreateWatcher();
   }
 
@@ -605,6 +606,20 @@ class DualExplorerProvider implements vscode.TreeDataProvider<ExplorerItem>, vsc
     };
 
     void this.context.globalState.update(this.stateKey, payload);
+    this.syncContexts();
+  }
+
+  syncContexts(): void {
+    const k = this.key;
+    const hasAny = !!this.rootUri || !!this.filter || this.filterList.length > 0
+      || !!this.topLevelDirRegex || this.topLevelDirList.length > 0 || !!this.foregroundColor;
+    void vscode.commands.executeCommand("setContext", `dualExplorer.hasRoot${k}`, !!this.rootUri);
+    void vscode.commands.executeCommand("setContext", `dualExplorer.hasFilter${k}`, !!this.filter);
+    void vscode.commands.executeCommand("setContext", `dualExplorer.hasFilterList${k}`, this.filterList.length > 0);
+    void vscode.commands.executeCommand("setContext", `dualExplorer.hasTopLevelDirRegex${k}`, !!this.topLevelDirRegex);
+    void vscode.commands.executeCommand("setContext", `dualExplorer.hasTopLevelDirList${k}`, this.topLevelDirList.length > 0);
+    void vscode.commands.executeCommand("setContext", `dualExplorer.hasForegroundColor${k}`, !!this.foregroundColor);
+    void vscode.commands.executeCommand("setContext", `dualExplorer.hasAnyState${k}`, hasAny);
   }
 
   private get stateKey(): string {
